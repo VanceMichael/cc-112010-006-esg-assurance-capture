@@ -1,0 +1,197 @@
+{
+  "rounds": [
+    [
+      {
+        "path": "/exchange",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><h1>年度披露</h1><a data-doc=\"D1\" datetime=\"2026-03-01T10:00+08:00\" href=\"/docs/D1\">南岳设备 2025</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/docs/D1",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><article><section id=\"p5\" data-company=\"G\" data-site=\"S-01\" data-metric=\"water-new\" data-unit=\"m3\">柳溪厂区取用新水 830</section><section id=\"p8\" data-company=\"S\" data-site=\"S-02\" data-metric=\"water-total\" data-unit=\"m3\">柳溪厂区总用水 1640</section><section id=\"p15\" data-company=\"G\" data-metric=\"water-total\" data-unit=\"m3\">集团合计 2200</section></article></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/verifier",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" data-issued=\"2026-03-07T10:00+08:00\" href=\"/assurance/A1\">安和鉴证报告</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/assurance/A1",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><section id=\"p2\" data-owner=\"G\" data-disclosure=\"D1\" data-site=\"S-01\" data-period=\"2025\" data-metric=\"water-new\">第 2 页，供水边界为外购新水，厂内回用未计入。</section></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/assets",
+        "body": [
+          {
+            "site": "S-01",
+            "label": "柳溪厂区",
+            "owner": "G",
+            "through": "2026-04-10"
+          },
+          {
+            "site": "S-02",
+            "label": "柳溪厂区",
+            "owner": "S",
+            "from": "2024-01-01"
+          },
+          {
+            "site": "S-01",
+            "label": "柳溪厂区",
+            "owner": "S",
+            "from": "2026-04-10"
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/requirements",
+        "body": [
+          {
+            "id": "T1",
+            "site": "S-01",
+            "year": 2025,
+            "owner": "G",
+            "metric": "water-new",
+            "atMost": 850,
+            "unit": "m3",
+            "assurance": true
+          },
+          {
+            "id": "T2",
+            "site": "S-02",
+            "year": 2025,
+            "owner": "S",
+            "metric": "water-total",
+            "atMost": 2000,
+            "unit": "m3",
+            "assurance": true
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/issued",
+        "body": [
+          {
+            "id": "Q1",
+            "criteria": [
+              "T1"
+            ],
+            "on": "2026-03-12T12:00+08:00",
+            "sourceRefs": [
+              "D1#p5",
+              "A1#p2"
+            ]
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      }
+    ],
+    [
+      {
+        "path": "/exchange",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><h1>年度披露</h1><a data-doc=\"D1\" datetime=\"2026-03-01T10:00+08:00\" href=\"/docs/D1\">南岳设备 2025</a><a data-doc=\"N2\" datetime=\"2026-04-21T10:00+08:00\" href=\"/docs/N2\">更正公告</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/docs/N2",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-old=\"D1\" data-anchor=\"p5\" data-action=\"replace\" href=\"/docs/D2#p5\">更正场址取水</a><a data-old=\"D1\" data-anchor=\"p8\" data-action=\"carry\" href=\"/docs/D1#p8\">延用原场址</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/docs/D2",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><section id=\"p5\" data-company=\"G\" data-site=\"S-01\" data-metric=\"water-mixed\" data-unit=\"m3\">柳溪厂区含雨水及新水 860</section><a href=\"/assurance/A1\">审验函</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/verifier",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" href=\"/assurance/A1\">报告原页</a><a data-id=\"A4\" data-issued=\"2026-03-09T12:00+08:00\" href=\"/assurance/A4\">三月审验函补列</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/assurance/A4",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><section id=\"p4\" data-owner=\"S\" data-disclosure=\"D1\" data-site=\"S-02\" data-period=\"2025\" data-metric=\"water-total\">柳溪厂区总用水范围鉴证。</section></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      }
+    ],
+    [
+      {
+        "path": "/verifier",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" data-issued=\"2026-03-07T10:00+08:00\" href=\"/assurance/A1\">报告原页</a><a data-withdraws=\"A4\" datetime=\"2026-04-26T11:00+08:00\" href=\"/assurance/W4\">撤回</a></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "path": "/assurance/W4",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><section id=\"p1\" data-scope=\"S-02\" data-period=\"2025\">撤回 A4 的柳溪厂区鉴证。</section></html>",
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      }
+    ]
+  ],
+  "assets": {}
+}
