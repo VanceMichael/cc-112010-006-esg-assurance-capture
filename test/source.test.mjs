@@ -33,7 +33,7 @@ async function view(origin, step) {
 test('逐次发布可从资料源取回', async t => {
   const origin = await openSource(t)
   const ready = await request(origin, '/ready')
-  assert.deepEqual(await ready.json(), { status: 'ready', step: 0, steps: entries.length })
+  assert.deepEqual(await ready.json(), { status: 'ready', step: 0, steps: release.rounds.length })
   for (const [step, routes] of entries.entries()) {
     await view(origin, step)
     for (const entry of release.rounds[step].filter(row => routes.includes(row.path))) {
@@ -79,4 +79,22 @@ test('更正公告的网页定位可回到两个发布版本', async t => {
     const content = load(await page.text())
     assert.equal(content(link.hash).length, 1)
   }
+})
+
+test('机构补列从后续页发现，撤回预告与正式范围分别开放', async t => {
+  const origin = await openSource(t)
+  await view(origin, 1)
+  const index = load(await (await request(origin, '/verifier')).text())
+  const next = await request(origin, index('a[rel=next]').attr('href'))
+  const late = load(await next.text())
+  assert.equal(late('a[data-id=A4]').attr('data-issued'), '2026-03-09T12:00+08:00')
+  await view(origin, 2)
+  const notice = load(await (await request(origin, '/verifier')).text())
+  const url = notice('a[data-event=notice]').attr('href')
+  assert.equal((await request(origin, url)).status, 503)
+  await view(origin, 3)
+  const detail = load(await (await request(origin, url)).text())
+  assert.equal(detail('section').attr('data-effective'), '2026-04-28T00:00+08:00')
+  assert.equal(detail('section').attr('data-site'), 'S-02')
+  assert.equal(detail('section').attr('data-withdraws'), 'A4')
 })

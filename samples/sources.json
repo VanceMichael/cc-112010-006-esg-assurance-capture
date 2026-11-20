@@ -151,7 +151,7 @@
       },
       {
         "path": "/verifier",
-        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" href=\"/assurance/A1\">报告原页</a><a data-id=\"A4\" data-issued=\"2026-03-09T12:00+08:00\" href=\"/assurance/A4\">三月审验函补列</a></html>",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" href=\"/assurance/A1\">报告原页</a><a rel=\"next\" href=\"/verifier?list=late2\">机构目录下一页</a></html>",
         "status": 200,
         "method": "GET",
         "request": null,
@@ -168,12 +168,22 @@
         "headers": {
           "content-type": "text/html; charset=utf-8"
         }
+      },
+      {
+        "method": "GET",
+        "path": "/verifier?list=late2",
+        "status": 200,
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A4\" data-issued=\"2026-03-09T12:00+08:00\" href=\"/assurance/A4\">三月审验函补列</a></html>",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
       }
     ],
     [
       {
         "path": "/verifier",
-        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" data-issued=\"2026-03-07T10:00+08:00\" href=\"/assurance/A1\">报告原页</a><a data-withdraws=\"A4\" datetime=\"2026-04-26T11:00+08:00\" href=\"/assurance/W4\">撤回</a></html>",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" data-issued=\"2026-03-07T10:00+08:00\" href=\"/assurance/A1\">报告原页</a><a data-withdraws=\"A4\" data-event=\"notice\" datetime=\"2026-04-26T11:00+08:00\" href=\"/assurance/W4\">撤回</a></html>",
         "status": 200,
         "method": "GET",
         "request": null,
@@ -183,9 +193,31 @@
       },
       {
         "path": "/assurance/W4",
-        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><section id=\"p1\" data-scope=\"S-02\" data-period=\"2025\">撤回 A4 的柳溪厂区鉴证。</section></html>",
+        "body": {
+          "原因": "机构正式文件暂未开放"
+        },
+        "status": 503,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      }
+    ],
+    [
+      {
+        "path": "/verifier",
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><a data-id=\"A1\" data-issued=\"2026-03-07T10:00+08:00\" href=\"/assurance/A1\">报告原页</a><a data-withdraws=\"A4\" data-event=\"notice\" datetime=\"2026-04-26T11:00+08:00\" href=\"/assurance/W4\">撤回</a><a rel=\"next\" href=\"/verifier?list=late2\">机构目录下一页</a></html>",
         "status": 200,
         "method": "GET",
+        "request": null,
+        "headers": {
+          "content-type": "text/html; charset=utf-8"
+        }
+      },
+      {
+        "method": "GET",
+        "path": "/assurance/W4",
+        "status": 200,
+        "body": "<!doctype html><html lang=\"zh-CN\"><meta charset=\"utf-8\"><section id=\"p1\" data-withdraws=\"A4\" data-site=\"S-02\" data-owner=\"S\" data-period=\"2025\" data-metric=\"water-total\" data-effective=\"2026-04-28T00:00+08:00\">柳溪厂区总用水鉴证从标明的生效日撤回。</section></html>",
         "request": null,
         "headers": {
           "content-type": "text/html; charset=utf-8"
